@@ -55,7 +55,7 @@ body {
 }
 .item {
   display: flex;
-  background-image: url(assets/ArdentrystInvItems/Ardentryst-Potion.png);
+  background-image: url(assets/ardentryst/Ardentryst-Potion.png);
   background-size: contain;
   height: 100px;
   width: 100px;
