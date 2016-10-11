@@ -27,7 +27,7 @@ var $shelf;
 var $item;
 var shelfWidth;
 var shelfHeight;
-var counter = 0;
+var counter = -1; //because function fires on load, dirty fix
 
 const items = [
  'assets/ArdentrystInvItems/Ardentryst-annelplate.png',
