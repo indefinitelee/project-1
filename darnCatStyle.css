@@ -55,10 +55,15 @@ body {
 }
 .item {
   display: flex;
+  background-image: url(assets/ArdentrystInvItems/Ardentryst-Potion.png);
+  background-size: contain;
   height: 100px;
   width: 100px;
   left: 155px;
   position: relative;
-  background-color: blue;
+/*  background-color: blue;*/
+}
+.results {
+  margin-left: 100px;
 }
 
