@@ -1,6 +1,6 @@
 $(function() {
 
-  $cat = $(".cat");
+  $cat = $('.cat');
   $shelf = $('.shelf')
   $item = $('.item');
 
@@ -9,7 +9,7 @@ $(function() {
 
   updateCounter()
   setItemLoops()
-  setCatClick()
+  // catAnimate()
 
   var spawnInterval = 5000;
 
@@ -19,7 +19,6 @@ $(function() {
     // this needs to spawn items.
   }
   setInterval(spawnItem, 4000);
-
 });
 
 var $cat;
@@ -27,47 +26,30 @@ var $shelf;
 var $item;
 var shelfWidth;
 var shelfHeight;
-var counter = -1; //because function fires on load, dirty fix
+var counter = -1;
 
-const items = [
- 'assets/ArdentrystInvItems/Ardentryst-annelplate.png',
- 'assets/ArdentrystInvItems/Ardentryst-AnneludineLeggings.png',
- 'assets/ArdentrystInvItems/Ardentryst-BlueHood.png',
- 'assets/ArdentrystInvItems/Ardentryst-Broadsword.png',
- 'assets/ArdentrystInvItems/Ardentryst-BronzeBattleAxe.png',
- 'assets/ArdentrystInvItems/Ardentryst-BronzeBattleAxe2.png',
- 'assets/ArdentrystInvItems/Ardentryst-BronzeBattleAxe3.png',
- 'assets/ArdentrystInvItems/Ardentryst-BronzeGladius.png',
- 'assets/ArdentrystInvItems/Ardentryst-Chemical.png',
- 'assets/ArdentrystInvItems/Ardentryst-Chemical2.png',
- 'assets/ArdentrystInvItems/Ardentryst-Crossbow.png',
- 'assets/ArdentrystInvItems/Ardentryst-Crossbow2.png'
-];
-
-var setCatClick = function() {
-  $cat.click(function () {
-    // console.log($item);
+var catAnimate = (setInterval (function() {
     const catOrigin = $cat.position().left;
     var itemOrigin = $item.position().left;
     var diff = (itemOrigin - catOrigin) + $cat.width();
-    $cat.animate( { left: diff }, 'slow', function() {
-      // compare cat and item positions.
-      if ($cat.position().left >= $item.position().left) {
-        $item.animate( {left: (Math.random() * 200) + $item.position().left} );
-        $cat.animate( {left: catOrigin}, 'slow');
-      };
-      // if it's off the page, it falls
-      if ((($item.position().left) + 111) >= $shelf.width()) {
-        $item.delay(200).animate( {top: '80%'}, {duration: 2000} ) &&
-        $item.fadeOut('slow') &&
-        setTimeout(function() { $item.remove(); }, 3000);
-        updateCounter();
-      };
+
+     $cat.animate( { left: diff }, 1000)
+     // compare cat and item positions.
+       if ($cat.position().left < $item.position().left) {
+          $item.delay(600).animate( {left: (Math.random() * 200) + $item.position().left} );
+          $cat.animate( {left: catOrigin}, 'slow');
+        };
+       // if it's off the page, it falls
+       if ((($item.position().left) + 111) >= $shelf.width()) {
+          $item.delay(200).animate( {top: '80%'}, {duration: 1500} ) &&
+          $item.fadeOut('slow') &&
+          setTimeout(function() { $item.remove(); updateCounter(); playerLoses();}, 2500);
+        };
       // check for loss
       // checkGameStatus()
-    });
-  });
-}
+    }, 2000));
+
+
 
 var updateCounter = function() {
   counter++
@@ -112,7 +94,8 @@ var checkForLoss = function() {
 };
 
 var playerLoses = function() {
-  alert("ya lost, dingus");
+  window.confirm("You lost. Click OK to reload the page and try again.");
+  window.location.href='https://indefinitelee.github.io/project-1/';
 };
 
 var playerWins = function() {
@@ -122,6 +105,21 @@ var playerWins = function() {
 var checkForWin = function() {
   // all items are off the screen and the cat can't cause more chaos
 };
+
+const items = [
+ 'assets/ArdentrystInvItems/Ardentryst-annelplate.png',
+ 'assets/ArdentrystInvItems/Ardentryst-AnneludineLeggings.png',
+ 'assets/ArdentrystInvItems/Ardentryst-BlueHood.png',
+ 'assets/ArdentrystInvItems/Ardentryst-Broadsword.png',
+ 'assets/ArdentrystInvItems/Ardentryst-BronzeBattleAxe.png',
+ 'assets/ArdentrystInvItems/Ardentryst-BronzeBattleAxe2.png',
+ 'assets/ArdentrystInvItems/Ardentryst-BronzeBattleAxe3.png',
+ 'assets/ArdentrystInvItems/Ardentryst-BronzeGladius.png',
+ 'assets/ArdentrystInvItems/Ardentryst-Chemical.png',
+ 'assets/ArdentrystInvItems/Ardentryst-Chemical2.png',
+ 'assets/ArdentrystInvItems/Ardentryst-Crossbow.png',
+ 'assets/ArdentrystInvItems/Ardentryst-Crossbow2.png'
+];
 
 // const items = [
 //  'assets/ArdentrystInvItems/Ardentryst-annelplate.png',
