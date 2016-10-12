@@ -4,10 +4,11 @@ That Darn Cat!
 
 I this game your cat is on the shelf and is knocking items off of it. 
 You can click to move items back onto the shelf. 
-If the cat pushes items off the edge of the shelf they fall and break. 
-If several (10?) items fall off, you lose the game. 
+If the cat pushes items off the edge of the shelf it falls and breaks, and you lose. 
 
-The game can go on indefinitely as long as the player keeps items on the shelf. 
+The game can go on indefinitely as long as the player keeps the item on the shelf. 
+
+see https://git.generalassemb.ly/leerwilson/project-1 for commit history. 
 
 Technologies: HTML, CSS with flexbox, jQuery and vanilla javascript.
 credits: 
